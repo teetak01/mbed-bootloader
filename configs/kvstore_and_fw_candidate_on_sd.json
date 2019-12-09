@@ -114,7 +114,7 @@
             "sd.SPI_CLK"                               : "PC_7"
         },
         "NUCLEO_F429ZI": {
-            "storage_filesystem.rbp_internal_size"     : "(2*16*1024)"
+            "storage_filesystem.rbp_internal_size"     : "(2*16*1024)",
             "target.extra_labels_remove"               : [ "PSA"]
         },
         "NUCLEO_F207ZG": {

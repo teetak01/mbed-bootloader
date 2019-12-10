@@ -327,11 +327,8 @@ arm_uc_error_t ARM_UC_PAL_BlockDevice_Write(uint32_t slot_id,
         /* check that we are not writing too much */
         uint32_t aligned_size = 0;
         if (pal_blockdevice_firmware_size < offset + buffer->size) {
-                            " < %" PRIu32 " + %" PRIu32,
-                            pal_blockdevice_firmware_size, offset, buffer->size);
         } else if ((pal_blockdevice_firmware_size > offset + buffer->size) &&
                    (buffer->size % pal_blockdevice_page_size != 0)) {
-                            buffer->size, pal_blockdevice_page_size);
         } else if (pal_blockdevice_firmware_size == offset + buffer->size) {
             /* last chunk write page aligned data first */
             aligned_size = pal_blockdevice_round_down_to_page(buffer->size);

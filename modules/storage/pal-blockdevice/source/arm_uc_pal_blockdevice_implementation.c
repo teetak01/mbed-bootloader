@@ -315,7 +315,6 @@ arm_uc_error_t ARM_UC_PAL_BlockDevice_Write(uint32_t slot_id,
     arm_uc_error_t result = { .code = ERR_INVALID_PARAMETER };
 
     if (buffer && buffer->ptr) {
-                      slot_id, offset, buffer->size);
         int status = ARM_UC_BLOCKDEVICE_SUCCESS;
 
         /* find address of slot */
@@ -341,8 +340,6 @@ arm_uc_error_t ARM_UC_PAL_BlockDevice_Write(uint32_t slot_id,
             status = arm_uc_blockdevice_program(buffer->ptr,
                                                 physical_address,
                                                 aligned_size);
-            if (status == ARM_UC_BLOCKDEVICE_FAIL) {
-            }
         }
 
         /* last chunk write remainder */
@@ -356,7 +353,6 @@ arm_uc_error_t ARM_UC_PAL_BlockDevice_Write(uint32_t slot_id,
                                                     physical_address + aligned_size,
                                                     pal_blockdevice_page_size);
             } else {
-
                 status = ARM_UC_BLOCKDEVICE_FAIL;
             }
         }
@@ -385,7 +381,6 @@ arm_uc_error_t ARM_UC_PAL_BlockDevice_Write(uint32_t slot_id,
 arm_uc_error_t ARM_UC_PAL_BlockDevice_Finalize(uint32_t slot_id)
 {
     arm_uc_error_t result = { .code = ERR_NONE };
-
 
     pal_blockdevice_signal_internal(ARM_UC_PAAL_EVENT_FINALIZE_DONE);
 
